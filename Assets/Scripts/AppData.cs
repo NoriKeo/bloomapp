@@ -25,8 +25,9 @@ using UnityEngine;
   public class GameData
   {
     public int flowerCount;
-    public int[] meadows;
-    
+    public int[] meadows = new int[]{1,3,4};
+    public int currentLevel = 1;
+
   }
   
   [System.Serializable]

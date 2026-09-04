@@ -6,9 +6,10 @@ public class FlowerTarget : MonoBehaviour
     public Sprite targetPreview;
     private Game gameManager;
 
-    private bool _isSelected = false;
+    public bool _isSelected = false;
+    public bool IsCompleted { get; private set; } = false;
 
-    private bool IsSelected
+    public bool IsSelected
     {
         get => _isSelected;
         set
@@ -17,8 +18,8 @@ public class FlowerTarget : MonoBehaviour
             _isSelected = value;
         }
     }
-
     private Collider2D _collider2D;
+
 
     private void Awake()
     {
@@ -33,10 +34,44 @@ public class FlowerTarget : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (gameManager != null && !IsSelected)
+        if (gameManager != null && !IsSelected && !IsCompleted)
         {
             gameManager.SelectFlower(transform, targetPreview);
             IsSelected = true;
+        }
+    }
+
+    public void CheckIfFlowerIsComplete()
+    {
+        Debug.Log($"jippppi");
+
+        if (IsCompleted)
+        {
+            return;
+        }
+        Peatal[] allPeatals = GetComponentsInChildren<Peatal>();
+        foreach (Peatal p in allPeatals)
+        {
+            if (!p.IsCorrectlyColored)
+            {
+                return;
+            }
+        }
+        IsCompleted = true;
+
+        if (gameManager != null)
+        {
+            gameManager.OnFlowerCompleted();
+        }
+    }
+
+    public void TriggerSelected()
+    {
+        if (gameManager != null && !IsSelected && !IsCompleted)
+        {
+            IsSelected = true;
+            gameManager.SelectFlower(transform, targetPreview);
+            
         }
     }
 }

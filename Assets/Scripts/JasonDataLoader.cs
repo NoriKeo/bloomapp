@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -32,12 +33,34 @@ public class JasonDataLoader : MonoBehaviour
         {
             string json = File.ReadAllText(filrPath);
             appData = JsonUtility.FromJson<AppData>(json);
+
+            if (appData.game == null)
+            {
+                appData.game = new List<GameData>();
+            }
+            if (appData.mias == null)
+            {
+                appData.mias = new List<MiasData>();
+            }
+            if (appData.game.Count == 0)
+            {
+                appData.game.Add(new GameData { flowerCount = 0 });
+            }
+            if (appData.mias.Count == 0){
+                appData.mias.Add(new MiasData { reactionTime = 0 });}
         }
         else
         {
             appData = new AppData();
             
             appData.users.Add(new UserData { username = "Namie", password = "123" });
+            
+            /*appData.game.Add(new GameData { flowerCount = 0});
+            
+            appData.mias.Add(new MiasData { reactionTime = 0, bugExperiments = 0, bugTrapped = 0, bugEscape = 0});*/
+            if (appData.game.Count == 0) appData.game.Add(new GameData { flowerCount = 0 });
+            if (appData.mias.Count == 0) appData.mias.Add(new MiasData { reactionTime = 0, bugExperiments = 0, bugTrapped = 0, bugEscape = 0 });
+            
             SaveData();
         }
     }
