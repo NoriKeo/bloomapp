@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class FlowerTarget : MonoBehaviour
 {
+    [SerializeField] private Transform zoomPos;
     public Sprite targetPreview;
     private Game gameManager;
 
@@ -36,7 +37,7 @@ public class FlowerTarget : MonoBehaviour
     {
         if (gameManager != null && !IsSelected && !IsCompleted)
         {
-            gameManager.SelectFlower(transform, targetPreview);
+            gameManager.SelectFlower(zoomPos, targetPreview);
             IsSelected = true;
         }
     }

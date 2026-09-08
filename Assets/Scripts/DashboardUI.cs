@@ -94,7 +94,7 @@ public class DashboardUI : MonoBehaviour
             
          }
          
-         data.currentLevel = 1;
+         data.currentLevelIndex = 1;
          JasonDataLoader.instance.SaveData();
          Debug.Log("new Lavel stuff");
       }

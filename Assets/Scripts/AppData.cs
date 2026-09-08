@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
-  [System.Serializable]
+[System.Serializable]
   public class UserData
   {
     public string username;
@@ -26,7 +27,7 @@ using UnityEngine;
   {
     public int flowerCount;
     public int[] meadows = new int[]{1,3,4};
-    public int currentLevel = 1;
+    [FormerlySerializedAs("currentLevel")] public int currentLevelIndex = 1;
 
   }
   
