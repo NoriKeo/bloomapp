@@ -4518,6 +4518,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flower (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4099785073473425609, guid: c2b0aad5c209edf4baeefe06a5b029f8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4927612936556672447, guid: c2b0aad5c209edf4baeefe06a5b029f8, type: 3}
       propertyPath: m_Offset.x
       value: 0
@@ -6142,7 +6146,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: ae3969c8b9317c44d91221b101ab6ff9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6192,7 +6196,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2612573093830068901, guid: c2b0aad5c209edf4baeefe06a5b029f8, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886183951620633818, guid: c2b0aad5c209edf4baeefe06a5b029f8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4099785073473425609, guid: c2b0aad5c209edf4baeefe06a5b029f8, type: 3}
       propertyPath: m_Name
@@ -6202,17 +6210,33 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4527704333050270862, guid: c2b0aad5c209edf4baeefe06a5b029f8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4927612936556672447, guid: c2b0aad5c209edf4baeefe06a5b029f8, type: 3}
       propertyPath: m_Offset.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5485914936457662951, guid: c2b0aad5c209edf4baeefe06a5b029f8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841548431701106657, guid: c2b0aad5c209edf4baeefe06a5b029f8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841548431701106657, guid: c2b0aad5c209edf4baeefe06a5b029f8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.29
+      objectReference: {fileID: 0}
     - target: {fileID: 5841548431701106657, guid: c2b0aad5c209edf4baeefe06a5b029f8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.69
+      value: -1.75
       objectReference: {fileID: 0}
     - target: {fileID: 5841548431701106657, guid: c2b0aad5c209edf4baeefe06a5b029f8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.73
+      value: -3.8
       objectReference: {fileID: 0}
     - target: {fileID: 5841548431701106657, guid: c2b0aad5c209edf4baeefe06a5b029f8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6246,6 +6270,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5841548431701106657, guid: c2b0aad5c209edf4baeefe06a5b029f8, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6582539862444732891, guid: c2b0aad5c209edf4baeefe06a5b029f8, type: 3}
       propertyPath: m_LayerOverridePriority
       value: 0
@@ -6254,13 +6282,21 @@ PrefabInstance:
       propertyPath: m_Offset.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8420195653769490901, guid: c2b0aad5c209edf4baeefe06a5b029f8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 264
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420195653769490901, guid: c2b0aad5c209edf4baeefe06a5b029f8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 415
+      objectReference: {fileID: 0}
     - target: {fileID: 8509597576608141953, guid: c2b0aad5c209edf4baeefe06a5b029f8, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8509597576608141953, guid: c2b0aad5c209edf4baeefe06a5b029f8, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8733960345674258544, guid: c2b0aad5c209edf4baeefe06a5b029f8, type: 3}
       propertyPath: m_Enabled
@@ -6268,7 +6304,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8733960345674258544, guid: c2b0aad5c209edf4baeefe06a5b029f8, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9089177186793778640, guid: c2b0aad5c209edf4baeefe06a5b029f8, type: 3}
       propertyPath: targetColorHex
