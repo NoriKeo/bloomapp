@@ -46,10 +46,10 @@ public class Game : MonoBehaviour
     {
         if (isZoomedIn) return;
         currentFlower = flower;
-        StartCoroutine(Zoom(targetPreview));
+        StartCoroutine(ZoomIn(targetPreview));
     }
 
-    private IEnumerator Zoom(Sprite targetPreview)
+    private IEnumerator ZoomIn(Sprite targetPreview)
     {
         Vector3 targetPos = new Vector3(currentFlower.position.x, currentFlower.position.y,
             mainCamera.transform.position.z);
@@ -87,20 +87,24 @@ public class Game : MonoBehaviour
         }
     }
 
-    public void OnFlowerCompleted()
+    //stores data in JSON
+    public void OnFlowerCompleted(float completionTime)
     {
         if (data.game.Count > 0)
         {
             data.game[0].flowerCount++;
+            data.game[0].totalFlowerCompletionTime += completionTime;
         }
 
         Debug.Log($"HIIIIII: {data.game[0].flowerCount}");
 
-        if (JasonDataLoader.instance != null && JasonDataLoader.instance.appData.game.Count > 0)
+        if (JsonDataLoader.instance != null && JsonDataLoader.instance.appData.game.Count > 0)
         {
-            JasonDataLoader.instance.appData.game[0].flowerCount++;
-            JasonDataLoader.instance.SaveData();
-            Debug.Log($"HIIIIII FLower Count: {JasonDataLoader.instance.appData.game[0].flowerCount}");
+            JsonDataLoader.instance.appData.game[0].flowerCount++;
+            JsonDataLoader.instance.appData.game[0].totalFlowerCompletionTime += completionTime;
+
+            JsonDataLoader.instance.SaveData();
+            Debug.Log($"HIIIIII FLower Count: {JsonDataLoader.instance.appData.game[0].flowerCount}");
         }
 
 

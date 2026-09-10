@@ -6,10 +6,12 @@ public class FlowerTarget : MonoBehaviour
     [SerializeField] private Transform zoomPos;
     public Sprite targetPreview;
     private Game gameManager;
+    private float _completionTimer;
 
     public bool _isSelected = false;
     public bool IsCompleted { get; private set; } = false;
 
+    //reports that a flower has been selected
     public bool IsSelected
     {
         get => _isSelected;
@@ -19,6 +21,7 @@ public class FlowerTarget : MonoBehaviour
             _isSelected = value;
         }
     }
+
     private Collider2D _collider2D;
 
 
@@ -33,15 +36,20 @@ public class FlowerTarget : MonoBehaviour
         IsSelected = false;
     }
 
-    private void OnMouseDown()
+    private void Update()
     {
-        if (gameManager != null && !IsSelected && !IsCompleted)
+        if (IsSelected && !IsCompleted)
         {
-            gameManager.SelectFlower(zoomPos, targetPreview);
-            IsSelected = true;
+            _completionTimer += Time.deltaTime;
         }
     }
 
+    private void OnMouseDown()
+    {
+        TriggerSelected();
+    }
+   
+    //This is where we check whether the flower has been fully coloured in 
     public void CheckIfFlowerIsComplete()
     {
         Debug.Log($"jippppi");
@@ -50,6 +58,7 @@ public class FlowerTarget : MonoBehaviour
         {
             return;
         }
+
         Peatal[] allPeatals = GetComponentsInChildren<Peatal>();
         foreach (Peatal p in allPeatals)
         {
@@ -58,11 +67,13 @@ public class FlowerTarget : MonoBehaviour
                 return;
             }
         }
+
         IsCompleted = true;
+
 
         if (gameManager != null)
         {
-            gameManager.OnFlowerCompleted();
+            gameManager.OnFlowerCompleted(_completionTimer);
         }
     }
 
@@ -70,9 +81,9 @@ public class FlowerTarget : MonoBehaviour
     {
         if (gameManager != null && !IsSelected && !IsCompleted)
         {
+            Debug.Log($"{gameObject.name} at {zoomPos.position} was selected");
+            gameManager.SelectFlower(zoomPos, targetPreview);
             IsSelected = true;
-            gameManager.SelectFlower(transform, targetPreview);
-            
         }
     }
 }

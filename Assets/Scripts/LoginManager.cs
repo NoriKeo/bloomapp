@@ -13,7 +13,7 @@ public class LoginManager : MonoBehaviour
         string usernames = username.text.Trim();
         string passwords = password.text.Trim();
 
-        if (JasonDataLoader.instance.ValidateLogin(usernames, passwords))
+        if (JsonDataLoader.instance.ValidateLogin(usernames, passwords))
         {
             SceneManager.LoadScene(2);
         }

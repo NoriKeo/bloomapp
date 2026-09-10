@@ -8,41 +8,40 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene(1);
-        /*if (JasonDataLoader.instance != null && JasonDataLoader.instance.appData.game.Count > 0)
+        if (JsonDataLoader.instance != null && JsonDataLoader.instance.appData.game.Count > 0)
         {
-            GameData gameData = JasonDataLoader.instance.appData.game[0];
-            gameData.currentLevel = 1;
-            JasonDataLoader.instance.SaveData();
+            GameData gameData = JsonDataLoader.instance.appData.game[0];
+            gameData.currentLevelIndex = 0;
+            JsonDataLoader.instance.SaveData();
 
             LoadCurrentLevel(gameData);
         }
         else
         {
             SceneManager.LoadScene(1);
-        }*/
+        }
     }
 
     public static void LoadNextLevel()
     {
-        if (!JasonDataLoader.instance || JasonDataLoader.instance.appData.game.Count == 0)
+        if (!JsonDataLoader.instance || JsonDataLoader.instance.appData.game.Count == 0)
         {
             return;
         }
 
-        GameData gameData = JasonDataLoader.instance.appData.game[0];
+        GameData gameData = JsonDataLoader.instance.appData.game[0];
         gameData.currentLevelIndex++;
 
         if (gameData.currentLevelIndex < gameData.meadows.Length)
         {
-            JasonDataLoader.instance.SaveData();
+            JsonDataLoader.instance.SaveData();
             LoadCurrentLevel(gameData);
         }
         else
         {
             Debug.Log("Levels finished");
             gameData.currentLevelIndex = 0;
-            JasonDataLoader.instance.SaveData();
+            JsonDataLoader.instance.SaveData();
             SceneManager.LoadScene(0);
         }
     }

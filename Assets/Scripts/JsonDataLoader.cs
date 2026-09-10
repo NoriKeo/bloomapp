@@ -3,11 +3,10 @@ using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class JasonDataLoader : MonoBehaviour
+public class JsonDataLoader : MonoBehaviour
 {
-    
-    public static JasonDataLoader instance;
-    
+    public static JsonDataLoader instance;
+
     public AppData appData = new AppData();
     private string filrPath;
 
@@ -17,7 +16,7 @@ public class JasonDataLoader : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            
+
             filrPath = Path.Combine(Application.persistentDataPath, "appData.json");
             LoadData();
         }
@@ -27,6 +26,7 @@ public class JasonDataLoader : MonoBehaviour
         }
     }
 
+    // loads data from json file
     public void LoadData()
     {
         if (File.Exists(filrPath))
@@ -38,39 +38,45 @@ public class JasonDataLoader : MonoBehaviour
             {
                 appData.game = new List<GameData>();
             }
+
             if (appData.mias == null)
             {
                 appData.mias = new List<MiasData>();
             }
+
             if (appData.game.Count == 0)
             {
                 appData.game.Add(new GameData { flowerCount = 0 });
             }
-            if (appData.mias.Count == 0){
-                appData.mias.Add(new MiasData { reactionTime = 0 });}
+
+            if (appData.mias.Count == 0)
+            {
+                appData.mias.Add(new MiasData { reactionTime = 0 });
+            }
         }
         else
         {
             appData = new AppData();
-            
+
             appData.users.Add(new UserData { username = "Namie", password = "123" });
-            
+
             /*appData.game.Add(new GameData { flowerCount = 0});
-            
+
             appData.mias.Add(new MiasData { reactionTime = 0, bugExperiments = 0, bugTrapped = 0, bugEscape = 0});*/
             if (appData.game.Count == 0) appData.game.Add(new GameData { flowerCount = 0 });
-            if (appData.mias.Count == 0) appData.mias.Add(new MiasData { reactionTime = 0, bugExperiments = 0, bugTrapped = 0, bugEscape = 0 });
-            
+            if (appData.mias.Count == 0)
+                appData.mias.Add(new MiasData { reactionTime = 0, bugExperiments = 0, bugTrapped = 0, bugEscape = 0 });
+
             SaveData();
         }
     }
-
+    // save data to json file
     public void SaveData()
     {
         string json = JsonUtility.ToJson(appData, true);
         File.WriteAllText(filrPath, json);
     }
-
+   //checks the login data
     public bool ValidateLogin(string username, string password)
     {
         foreach (var user in appData.users)
@@ -79,10 +85,8 @@ public class JasonDataLoader : MonoBehaviour
             {
                 return true;
             }
-            
         }
 
         return false;
     }
-
 }
