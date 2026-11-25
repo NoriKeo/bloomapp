@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class FlowerTarget : MonoBehaviour
 {
@@ -42,6 +43,7 @@ public class FlowerTarget : MonoBehaviour
         {
             _completionTimer += Time.deltaTime;
         }
+        
     }
 
     private void OnMouseDown()
