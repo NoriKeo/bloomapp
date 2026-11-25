@@ -6,6 +6,7 @@ public class LoginManager : MonoBehaviour
 {
     public TMP_InputField username;
     public TMP_InputField password;
+    public Button loginButton;
     public GameObject loginPanel;
 
     public void LoginButtonClicked()
