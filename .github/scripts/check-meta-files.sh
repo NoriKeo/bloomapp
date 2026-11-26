@@ -21,6 +21,13 @@ while IFS= read -r -d '' meta; do
   fi
 done < <(find Assets -name '*.meta' -print0)
 
+# Git does not store empty folders, so their .meta ends up orphaned on other
+# machines / in CI. Catch that locally too.
+while IFS= read -r -d '' dir; do
+  echo "::error file=${dir}::Empty folder ${dir} (Git won't store it; delete it and its .meta)"
+  status=1
+done < <(find Assets -mindepth 1 -type d -empty -print0)
+
 if [[ $status -eq 0 ]]; then
   echo "All .meta files OK."
 fi
