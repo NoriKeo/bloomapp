@@ -27,9 +27,9 @@ public class DashboardUI : MonoBehaviour
     {
         UpdateDashboard();
     }
-    
-    
-//Update Mia’s details when new data has been recorded 
+
+
+//Update Mia’s details when new data has been recorded
     private void UpdateDashboard()
     {
         if (JsonDataLoader.instance == null)

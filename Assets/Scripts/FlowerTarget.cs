@@ -43,15 +43,15 @@ public class FlowerTarget : MonoBehaviour
         {
             _completionTimer += Time.deltaTime;
         }
-        
+
     }
 
     private void OnMouseDown()
     {
         TriggerSelected();
     }
-   
-    //This is where we check whether the flower has been fully coloured in 
+
+    //This is where we check whether the flower has been fully coloured in
     public void CheckIfFlowerIsComplete()
     {
         Debug.Log($"jippppi");

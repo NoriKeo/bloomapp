@@ -10,10 +10,10 @@ public class LoginManager : MonoBehaviour
     public Button loginButton;
     public GameObject loginPanel;
     public TMP_Text feedbackText;
-    
+
     public int maxAttemptsBeforeCooldown = 3;
     public float cooldownTime = 120f;
-    
+
     private int attempts = 0;
     private bool isLocked = false;
 
@@ -34,10 +34,10 @@ public class LoginManager : MonoBehaviour
     public void LoginButtonClicked()
     {
        if (isLocked) return;
-       
+
        string usernames = username != null ? username.text.Trim() : "";
        string passwords = password != null ? password.text : "";
-       
+
        if (JsonDataLoader.instance != null && JsonDataLoader.instance.ValidateLogin(usernames, passwords))
        {
            attempts = 0;
@@ -48,9 +48,9 @@ public class LoginManager : MonoBehaviour
        {
            HandleFailedAttempt("Login failed.");
        }
-        
+
     }
-    
+
     private void HandleFailedAttempt(string message)
     {
         attempts++;

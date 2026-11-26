@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Static-analysis rules for the Unity compiler (applies to every assembly).
+  The Microsoft.Unity.Analyzers DLL lives in Assets/Scripts/Analyzers and therefore
+  runs on GameScripts and the test assemblies that reference it.
+  Rules not listed here keep their default severity (mostly Warning / Info).
+  Rules set to "Error" break compilation - in the Editor and in CI.
+-->
+<RuleSet Name="Bloom rules" Description="Unity analyzer rules for bloomapp" ToolsVersion="16.0">
+  <Rules AnalyzerId="Microsoft.Unity.Analyzers" RuleNamespace="Microsoft.Unity.Analyzers">
+    <!-- Real bugs: fail the build -->
+    <Rule Id="UNT0006" Action="Error" />   <!-- Incorrect Unity message signature (e.g. Update(int)) -->
+    <Rule Id="UNT0007" Action="Error" />   <!-- ?? on Unity objects bypasses Unity's null check -->
+    <Rule Id="UNT0008" Action="Error" />   <!-- ?. on Unity objects bypasses Unity's null check -->
+    <Rule Id="UNT0010" Action="Error" />   <!-- MonoBehaviour created with 'new' -->
+    <Rule Id="UNT0011" Action="Error" />   <!-- ScriptableObject created with 'new' -->
+    <Rule Id="UNT0029" Action="Error" />   <!-- 'is null' pattern on Unity objects -->
+    <!-- Performance / style: report as warnings -->
+    <Rule Id="UNT0001" Action="Warning" /> <!-- Empty Unity message (empty Update etc.) -->
+    <Rule Id="UNT0002" Action="Warning" /> <!-- Inefficient tag comparison, use CompareTag -->
+    <Rule Id="UNT0022" Action="Warning" /> <!-- Inefficient position/rotation assignment -->
+  </Rules>
+</RuleSet>

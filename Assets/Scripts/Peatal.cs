@@ -6,14 +6,14 @@ using ColorUtility = UnityEngine.ColorUtility;
 public class Peatal : MonoBehaviour
 {
     public string targetColorHex = "#FFFFFF";
-    
+
     private SpriteRenderer sr;
     private Color targetColor;
     private Game gameManager;
     private FlowerTarget parentFlower;
-    
+
     public bool IsCorrectlyColored { get; private set; } = false;
-    
+
 
     private void Awake()
     {
@@ -37,12 +37,12 @@ public class Peatal : MonoBehaviour
             {
                 parentFlower.TriggerSelected();
             }
-            
+
         }
         if (ColorPaletteManager.SelectedColor != Color.clear)
         {
             sr.color = ColorPaletteManager.SelectedColor;
-            
+
             IsCorrectlyColored = ColorsMatch(sr.color, targetColor);
             Debug.Log($"testi {targetColorHex} correctly colored");
 
