@@ -43,7 +43,7 @@ public static class InputHelper
             : EventSystem.current.IsPointerOverGameObject();
     }
 
-    public static bool HitCollider2D(Vector2 screenPos, Collider2D targetCollider)
+    public static bool HitsCollider2D(Vector2 screenPos, Collider2D targetCollider)
     {
         if (Camera.main == null || targetCollider == null) return false;
 

@@ -1,13 +1,14 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.EventSystems;
 
 public class FlowerTarget : MonoBehaviour
 {
-    [SerializeField] private Transform zoomPos;
+    [FormerlySerializedAs("zoomPos")] [SerializeField] private Transform zoomPosition;
     public Sprite targetPreview;
-    private Game gameManager;
-    private float _completionTimer;
+    private GameManager gameManager;
+    private float completionTimer;
 
     public bool _isSelected = false;
     public bool IsCompleted { get; private set; } = false;
@@ -18,22 +19,22 @@ public class FlowerTarget : MonoBehaviour
         get => _isSelected;
         set
         {
-            _collider2D.enabled = !value;
+            flowerCollider.enabled = !value;
             _isSelected = value;
         }
     }
 
-    private Collider2D _collider2D;
+    private Collider2D flowerCollider;
 
 
     private void Awake()
     {
-        _collider2D = GetComponent<Collider2D>();
+        flowerCollider = GetComponent<Collider2D>();
     }
 
     private void Start()
     {
-        gameManager = FindObjectOfType<Game>();
+        gameManager = FindObjectOfType<GameManager>();
         IsSelected = false;
     }
 
@@ -41,14 +42,14 @@ public class FlowerTarget : MonoBehaviour
     {
         if (IsSelected && !IsCompleted)
         {
-            _completionTimer += Time.deltaTime;
+            completionTimer += Time.deltaTime;
         }
 
     }
 
     private void OnMouseDown()
     {
-        TriggerSelected();
+        Select();
     }
 
     //This is where we check whether the flower has been fully coloured in
@@ -61,8 +62,8 @@ public class FlowerTarget : MonoBehaviour
             return;
         }
 
-        Peatal[] allPeatals = GetComponentsInChildren<Peatal>();
-        foreach (Peatal p in allPeatals)
+        Petal[] allPetals = GetComponentsInChildren<Petal>();
+        foreach (Petal p in allPetals)
         {
             if (!p.IsCorrectlyColored)
             {
@@ -75,16 +76,16 @@ public class FlowerTarget : MonoBehaviour
 
         if (gameManager != null)
         {
-            gameManager.OnFlowerCompleted(_completionTimer);
+            gameManager.OnFlowerCompleted(completionTimer);
         }
     }
 
-    public void TriggerSelected()
+    public void Select()
     {
         if (gameManager != null && !IsSelected && !IsCompleted)
         {
-            Debug.Log($"{gameObject.name} at {zoomPos.position} was selected");
-            gameManager.SelectFlower(zoomPos, targetPreview);
+            Debug.Log($"{gameObject.name} at {zoomPosition.position} was selected");
+            gameManager.SelectFlower(zoomPosition, targetPreview);
             IsSelected = true;
         }
     }

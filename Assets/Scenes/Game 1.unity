@@ -6505,7 +6505,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1026961531}
         m_TargetAssemblyTypeName: ColorPaletteManager, Assembly-CSharp
-        m_MethodName: SetColorHimmelblau
+        m_MethodName: SetColorSkyBlue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6638,7 +6638,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1026961531}
         m_TargetAssemblyTypeName: ColorPaletteManager, Assembly-CSharp
-        m_MethodName: SetColorGrasgruen
+        m_MethodName: SetColorGrassGreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9365,7 +9365,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1026961531}
         m_TargetAssemblyTypeName: ColorPaletteManager, Assembly-CSharp
-        m_MethodName: SetColorHellblauPastell
+        m_MethodName: SetColorPastelLightBlue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9498,7 +9498,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1026961531}
         m_TargetAssemblyTypeName: ColorPaletteManager, Assembly-CSharp
-        m_MethodName: SetColorZitronenPastell
+        m_MethodName: SetColorPastelLemon
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10087,7 +10087,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1026961531}
         m_TargetAssemblyTypeName: ColorPaletteManager, Assembly-CSharp
-        m_MethodName: SetColorMintPastell
+        m_MethodName: SetColorPastelMint
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10370,7 +10370,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1026961531}
         m_TargetAssemblyTypeName: ColorPaletteManager, Assembly-CSharp
-        m_MethodName: SetColorMagentaBeere
+        m_MethodName: SetColorMagentaBerry
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10833,7 +10833,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1026961531}
         m_TargetAssemblyTypeName: ColorPaletteManager, Assembly-CSharp
-        m_MethodName: SetColorGrau
+        m_MethodName: SetColorGray
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10966,7 +10966,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1026961531}
         m_TargetAssemblyTypeName: ColorPaletteManager, Assembly-CSharp
-        m_MethodName: SetColorLilaPastell
+        m_MethodName: SetColorPastelLilac
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14009,7 +14009,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 519420033}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: QuitGame
+        m_MethodName: ReturnToStartScreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14219,7 +14219,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1026961531}
         m_TargetAssemblyTypeName: ColorPaletteManager, Assembly-CSharp
-        m_MethodName: SetColorAltrosaPastell
+        m_MethodName: SetColorDustyRose
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15649,7 +15649,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1026961531}
         m_TargetAssemblyTypeName: ColorPaletteManager, Assembly-CSharp
-        m_MethodName: SetColorCremeGelb
+        m_MethodName: SetColorCreamYellow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15939,7 +15939,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fbac33fe3e95b974aa82b4bc99587220, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
   flowerCountNeededForLevel: 15
   mainCamera: {fileID: 519420031}
   zoomedIn: 2.5
@@ -16135,7 +16135,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1026961531}
         m_TargetAssemblyTypeName: ColorPaletteManager, Assembly-CSharp
-        m_MethodName: SetColorSchwarz
+        m_MethodName: SetColorBlack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16542,7 +16542,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1026961531}
         m_TargetAssemblyTypeName: ColorPaletteManager, Assembly-CSharp
-        m_MethodName: SetColorRosaPastell
+        m_MethodName: SetColorPastelPink
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17303,7 +17303,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1026961531}
         m_TargetAssemblyTypeName: ColorPaletteManager, Assembly-CSharp
-        m_MethodName: SetColorKorallePink
+        m_MethodName: SetColorCoralPink
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20126,7 +20126,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1026961531}
         m_TargetAssemblyTypeName: ColorPaletteManager, Assembly-CSharp
-        m_MethodName: SetColorWeiss
+        m_MethodName: SetColorWhite
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

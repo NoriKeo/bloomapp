@@ -1,12 +1,13 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class Game : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     [SerializeField] private int flowerCountNeededForLevel;
     public Camera mainCamera;
-    public float zoomedIn = 2.5f;
+    [FormerlySerializedAs("zoomedIn")] public float zoomedInCameraSize = 2.5f;
     private float defaultCameraSize;
     private Vector3 defaultCameraPosition;
 
@@ -19,7 +20,7 @@ public class Game : MonoBehaviour
 
     public AppData data = new AppData();
 
-    private int _currentLevelFlowerCount;
+    private int currentLevelFlowerCount;
 
     private void Start()
     {
@@ -51,7 +52,7 @@ public class Game : MonoBehaviour
 
     private IEnumerator ZoomIn(Sprite targetPreview)
     {
-        Vector3 targetPos = new Vector3(currentFlower.position.x, currentFlower.position.y,
+        Vector3 targetPosition = new Vector3(currentFlower.position.x, currentFlower.position.y,
             mainCamera.transform.position.z);
         float elapsedTime = 0f;
         float duration = 0.5f;
@@ -59,14 +60,14 @@ public class Game : MonoBehaviour
         while (elapsedTime < duration)
         {
             mainCamera.transform.position =
-                Vector3.Lerp(mainCamera.transform.position, targetPos, elapsedTime / duration);
-            mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, zoomedIn, elapsedTime / duration);
+                Vector3.Lerp(mainCamera.transform.position, targetPosition, elapsedTime / duration);
+            mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, zoomedInCameraSize, elapsedTime / duration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        mainCamera.transform.position = targetPos;
-        mainCamera.orthographicSize = zoomedIn;
+        mainCamera.transform.position = targetPosition;
+        mainCamera.orthographicSize = zoomedInCameraSize;
 
         if (targetImage != null && targetPreview != null)
         {
@@ -98,13 +99,13 @@ public class Game : MonoBehaviour
 
         Debug.Log($"HIIIIII: {data.game[0].flowerCount}");
 
-        if (JsonDataLoader.instance != null && JsonDataLoader.instance.appData.game.Count > 0)
+        if (JsonDataLoader.Instance != null && JsonDataLoader.Instance.appData.game.Count > 0)
         {
-            JsonDataLoader.instance.appData.game[0].flowerCount++;
-            JsonDataLoader.instance.appData.game[0].totalFlowerCompletionTime += completionTime;
+            JsonDataLoader.Instance.appData.game[0].flowerCount++;
+            JsonDataLoader.Instance.appData.game[0].totalFlowerCompletionTime += completionTime;
 
-            JsonDataLoader.instance.SaveData();
-            Debug.Log($"HIIIIII FLower Count: {JsonDataLoader.instance.appData.game[0].flowerCount}");
+            JsonDataLoader.Instance.SaveData();
+            Debug.Log($"HIIIIII FLower Count: {JsonDataLoader.Instance.appData.game[0].flowerCount}");
         }
 
 
@@ -122,11 +123,11 @@ public class Game : MonoBehaviour
 
         float elapsedTime = 0f;
         float duration = 0.5f;
-        Vector3 startPos = mainCamera.transform.position;
+        Vector3 startPosition = mainCamera.transform.position;
         float startSize = mainCamera.orthographicSize;
         while (elapsedTime < duration)
         {
-            mainCamera.transform.position = Vector3.Lerp(startPos, defaultCameraPosition, elapsedTime / duration);
+            mainCamera.transform.position = Vector3.Lerp(startPosition, defaultCameraPosition, elapsedTime / duration);
             mainCamera.orthographicSize = Mathf.Lerp(startSize, defaultCameraSize, elapsedTime / duration);
             elapsedTime += Time.deltaTime;
             yield return null;
@@ -136,9 +137,9 @@ public class Game : MonoBehaviour
         mainCamera.orthographicSize = defaultCameraSize;
 
         isZoomedIn = false;
-        ++_currentLevelFlowerCount;
+        ++currentLevelFlowerCount;
 
-        if (_currentLevelFlowerCount >= flowerCountNeededForLevel)
+        if (currentLevelFlowerCount >= flowerCountNeededForLevel)
         {
             CompleteLevel();
         }

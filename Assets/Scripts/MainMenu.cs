@@ -8,11 +8,11 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        if (JsonDataLoader.instance != null && JsonDataLoader.instance.appData.game.Count > 0)
+        if (JsonDataLoader.Instance != null && JsonDataLoader.Instance.appData.game.Count > 0)
         {
-            GameData gameData = JsonDataLoader.instance.appData.game[0];
+            GameData gameData = JsonDataLoader.Instance.appData.game[0];
             gameData.currentLevelIndex = 0;
-            JsonDataLoader.instance.SaveData();
+            JsonDataLoader.Instance.SaveData();
 
             LoadCurrentLevel(gameData);
         }
@@ -24,24 +24,24 @@ public class MainMenu : MonoBehaviour
 
     public static void LoadNextLevel()
     {
-        if (!JsonDataLoader.instance || JsonDataLoader.instance.appData.game.Count == 0)
+        if (!JsonDataLoader.Instance || JsonDataLoader.Instance.appData.game.Count == 0)
         {
             return;
         }
 
-        GameData gameData = JsonDataLoader.instance.appData.game[0];
+        GameData gameData = JsonDataLoader.Instance.appData.game[0];
         gameData.currentLevelIndex++;
 
         if (gameData.currentLevelIndex < gameData.meadows.Length)
         {
-            JsonDataLoader.instance.SaveData();
+            JsonDataLoader.Instance.SaveData();
             LoadCurrentLevel(gameData);
         }
         else
         {
             Debug.Log("Levels finished");
             gameData.currentLevelIndex = 0;
-            JsonDataLoader.instance.SaveData();
+            JsonDataLoader.Instance.SaveData();
             SceneManager.LoadScene(0);
         }
     }
@@ -56,7 +56,7 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(targetMeadowIndex);
     }
 
-    public void QuitGame()
+    public void ReturnToStartScreen()
     {
         SceneManager.LoadScene(0);
     }

@@ -2,11 +2,12 @@ using System;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class DashboardUI : MonoBehaviour
 {
     public TMP_Text flowerCountText;
-    public TMP_Text reactionTimeText;
+    [FormerlySerializedAs("reactionTimeText")] public TMP_Text averageCompletionTimeText;
     public TMP_Text bugExperimentsText;
     public TMP_Text bugTrappedText;
     public TMP_Text bugEscapeText;
@@ -32,13 +33,13 @@ public class DashboardUI : MonoBehaviour
 //Update Mia’s details when new data has been recorded
     private void UpdateDashboard()
     {
-        if (JsonDataLoader.instance == null)
+        if (JsonDataLoader.Instance == null)
         {
             Debug.LogWarning("Jason Data Loader is missing");
             return;
         }
 
-        AppData currentData = JsonDataLoader.instance != null ? JsonDataLoader.instance.appData : null;
+        AppData currentData = JsonDataLoader.Instance != null ? JsonDataLoader.Instance.appData : null;
         if (currentData == null)
         {
             Debug.Log("No data loaded");
@@ -53,10 +54,10 @@ public class DashboardUI : MonoBehaviour
                 flowerCountText.text = $"Final flowers: {currentData.game[0].flowerCount}";
             }
 
-            if (reactionTimeText != null)
+            if (averageCompletionTimeText != null)
             {
-                reactionTimeText.text =
-                    $"Average flower completion time: {GetAverageFlowerCompletionTime(currentData.game[0].totalFlowerCompletionTime, currentData.game[0].flowerCount)}";
+                averageCompletionTimeText.text =
+                    $"Average flower completion time: {FormatAverageCompletionTime(currentData.game[0].totalFlowerCompletionTime, currentData.game[0].flowerCount)}";
             }
         }
 
@@ -84,13 +85,13 @@ public class DashboardUI : MonoBehaviour
     }
 
     //Choose from various level layouts
-    public void OnLevelChanged(int level)
+    public void OnLevelChanged(int optionIndex)
     {
-        if (JsonDataLoader.instance || JsonDataLoader.instance.appData.game.Count > 0)
+        if (JsonDataLoader.Instance || JsonDataLoader.Instance.appData.game.Count > 0)
         {
-            GameData data = JsonDataLoader.instance.appData.game[0];
+            GameData data = JsonDataLoader.Instance.appData.game[0];
 
-            switch (level)
+            switch (optionIndex)
             {
                 case 0:
                     data.meadows = new[] { 1, 3, 4 };
@@ -105,17 +106,17 @@ public class DashboardUI : MonoBehaviour
 
             data.currentLevelIndex = 0;
             Debug.Log($"Changed to {data.meadows}");
-            JsonDataLoader.instance.SaveData();
+            JsonDataLoader.Instance.SaveData();
             Debug.Log("new Lavel stuff");
         }
     }
 
     //calculates the average response time
-    private string GetAverageFlowerCompletionTime(float totalTime, int flowerCount)
+    private string FormatAverageCompletionTime(float totalTime, int flowerCount)
     {
         var average = totalTime / flowerCount;
-        TimeSpan ts = TimeSpan.FromSeconds(average);
+        TimeSpan timeSpan = TimeSpan.FromSeconds(average);
 
-        return ts.ToString("m\\:ss\\.fff");
+        return timeSpan.ToString("m\\:ss\\.fff");
     }
 }

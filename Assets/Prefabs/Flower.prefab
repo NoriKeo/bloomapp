@@ -136,7 +136,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50995be302736a24e82bba07b498f308, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Peatal
+  m_EditorClassIdentifier: Assembly-CSharp::Petal
   targetColorHex: '#F59B14'
 --- !u!60 &4927612936556672447
 PolygonCollider2D:
@@ -417,7 +417,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50995be302736a24e82bba07b498f308, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Peatal
+  m_EditorClassIdentifier: Assembly-CSharp::Petal
   targetColorHex: '#96F06E'
 --- !u!60 &1769148005679647734
 PolygonCollider2D:
@@ -605,7 +605,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50995be302736a24e82bba07b498f308, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Peatal
+  m_EditorClassIdentifier: Assembly-CSharp::Petal
   targetColorHex: '#FFFFFF'
 --- !u!60 &8392618791115589467
 PolygonCollider2D:

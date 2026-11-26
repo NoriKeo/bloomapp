@@ -14,22 +14,22 @@ public class ColorPaletteManager : MonoBehaviour
         return Color.white;
     }
 
-    public void SetColorRosaPastell() => SelectedColor = HexToColor("#FFC8FF");
-    public void SetColorHellblauPastell() => SelectedColor = HexToColor("#DCFAFF");
-    public void SetColorCremeGelb() => SelectedColor = HexToColor("#FFEFC5");
-    public void SetColorLilaPastell() => SelectedColor = HexToColor("#EBEBFF");
-    public void SetColorAltrosaPastell() => SelectedColor = HexToColor("#FFD2D2");
+    public void SetColorPastelPink() => SelectedColor = HexToColor("#FFC8FF");
+    public void SetColorPastelLightBlue() => SelectedColor = HexToColor("#DCFAFF");
+    public void SetColorCreamYellow() => SelectedColor = HexToColor("#FFEFC5");
+    public void SetColorPastelLilac() => SelectedColor = HexToColor("#EBEBFF");
+    public void SetColorDustyRose() => SelectedColor = HexToColor("#FFD2D2");
     public void SetColorSandBeige() => SelectedColor = HexToColor("#F0E6DC");
-    public void SetColorZitronenPastell() => SelectedColor = HexToColor("#FFFFBE");
-    public void SetColorMintPastell() => SelectedColor = HexToColor("#EBFIDC");
+    public void SetColorPastelLemon() => SelectedColor = HexToColor("#FFFFBE");
+    public void SetColorPastelMint() => SelectedColor = HexToColor("#EBFIDC");
 
-    public void SetColorKorallePink() => SelectedColor = HexToColor("#FA6982");
-    public void SetColorGrau() => SelectedColor = HexToColor("#808080");
-    public void SetColorHimmelblau() => SelectedColor = HexToColor("#6EC8FA");
-    public void SetColorGrasgruen() => SelectedColor = HexToColor("#96F06E");
-    public void SetColorMagentaBeere() => SelectedColor = HexToColor("#DC6EA5");
+    public void SetColorCoralPink() => SelectedColor = HexToColor("#FA6982");
+    public void SetColorGray() => SelectedColor = HexToColor("#808080");
+    public void SetColorSkyBlue() => SelectedColor = HexToColor("#6EC8FA");
+    public void SetColorGrassGreen() => SelectedColor = HexToColor("#96F06E");
+    public void SetColorMagentaBerry() => SelectedColor = HexToColor("#DC6EA5");
     public void SetColorOrange() => SelectedColor = HexToColor("#F59B14");
 
-    public void SetColorWeiss() => SelectedColor = HexToColor("#FFFFFF");
-    public void SetColorSchwarz() => SelectedColor = HexToColor("#000000");
+    public void SetColorWhite() => SelectedColor = HexToColor("#FFFFFF");
+    public void SetColorBlack() => SelectedColor = HexToColor("#000000");
 }

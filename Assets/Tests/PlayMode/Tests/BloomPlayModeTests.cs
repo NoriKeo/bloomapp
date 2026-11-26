@@ -19,7 +19,7 @@ public class BloomPlayModeTests
         loader.appData.users.Add(new UserData { username = "Namie", password = "123" });
         loader.appData.game.Add(new GameData { flowerCount = 2, totalFlowerCompletionTime = 10f });
         loader.appData.mias.Add(new MiasData { bugExperiments = 3, bugTrapped = 1, bugEscape = 2 });
-        JsonDataLoader.instance = loader;
+        JsonDataLoader.Instance = loader;
 
         yield return null;
     }
@@ -41,21 +41,21 @@ public class BloomPlayModeTests
         var go = new GameObject("Login");
         var login = go.AddComponent<LoginManager>();
 
-        login.username = CreateInputField(go, "user");
-        login.password = CreateInputField(go, "pass");
+        login.usernameInput = CreateInputField(go, "user");
+        login.passwordInput = CreateInputField(go, "pass");
         login.loginButton = go.AddComponent<Button>();
         login.feedbackText = go.AddComponent<TextMeshProUGUI>();
         login.maxAttemptsBeforeCooldown = 3;
         login.cooldownTime = 5f;
 
-        login.username.text = "Namie";
-        login.password.text = "falsch";
+        login.usernameInput.text = "Namie";
+        login.passwordInput.text = "falsch";
 
         yield return null;
 
-        login.LoginButtonClicked();
-        login.LoginButtonClicked();
-        login.LoginButtonClicked();
+        login.OnLoginButtonClicked();
+        login.OnLoginButtonClicked();
+        login.OnLoginButtonClicked();
 
         yield return null;
 
@@ -72,7 +72,7 @@ public class BloomPlayModeTests
         var dashboard = go.AddComponent<DashboardUI>();
 
         dashboard.flowerCountText = CreateTmpText(go, "Flower");
-        dashboard.reactionTimeText = CreateTmpText(go, "Reaction");
+        dashboard.averageCompletionTimeText = CreateTmpText(go, "Reaction");
         dashboard.bugExperimentsText = CreateTmpText(go, "Exp");
         dashboard.bugTrappedText = CreateTmpText(go, "Trapped");
         dashboard.bugEscapeText = CreateTmpText(go, "Escape");
@@ -88,7 +88,7 @@ public class BloomPlayModeTests
     }
 
     [UnityTest]
-    public IEnumerator FlowerAndPeatal_WhenColorMatches_CompletesFlowerAndUpdatesGameData()
+    public IEnumerator FlowerAndPetal_WhenColorMatches_CompletesFlowerAndUpdatesGameData()
     {
         var camGo = new GameObject("MainCamera");
         camGo.tag = "MainCamera";
@@ -96,7 +96,7 @@ public class BloomPlayModeTests
         cam.orthographic = true;
 
         var gameGo = new GameObject("GameManager");
-        var game = gameGo.AddComponent<Game>();
+        var game = gameGo.AddComponent<GameManager>();
         game.mainCamera = cam;
 
         var flowerGo = new GameObject("Flower");
@@ -105,12 +105,12 @@ public class BloomPlayModeTests
         zoomGo.transform.SetParent(flowerGo.transform);
 
         var flower = flowerGo.AddComponent<FlowerTarget>();
-        SetPrivateField(flower, "zoomPos", zoomGo.transform);
+        SetPrivateField(flower, "zoomPosition", zoomGo.transform);
 
         var petalGo = new GameObject("Petal_1");
         petalGo.transform.SetParent(flowerGo.transform);
         petalGo.AddComponent<SpriteRenderer>();
-        var petal = petalGo.AddComponent<Peatal>();
+        var petal = petalGo.AddComponent<Petal>();
         petal.targetColorHex = "#FF0000";
 
         yield return null;
@@ -120,15 +120,15 @@ public class BloomPlayModeTests
 
         // Simuliert das Ausmalen und Prüfen über Reflection/Aufruf wie bei OnMouseDown
         petalGo.GetComponent<SpriteRenderer>().color = ColorPaletteManager.SelectedColor;
-        var matchMethod = typeof(Peatal).GetMethod("ColorsMatch", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+        var matchMethod = typeof(Petal).GetMethod("ColorsMatch", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
         bool matched = (bool)matchMethod.Invoke(petal, new object[] { red, red });
-        typeof(Peatal).GetProperty("IsCorrectlyColored").SetValue(petal, matched);
+        typeof(Petal).GetProperty("IsCorrectlyColored").SetValue(petal, matched);
         flower.CheckIfFlowerIsComplete();
 
         yield return null;
 
         Assert.IsTrue(flower.IsCompleted);
-        Assert.AreEqual(3, JsonDataLoader.instance.appData.game[0].flowerCount);
+        Assert.AreEqual(3, JsonDataLoader.Instance.appData.game[0].flowerCount);
 
         Object.Destroy(flowerGo);
         Object.Destroy(gameGo);

@@ -34,12 +34,12 @@ public class BloomEditModeTests
     }
 
     [Test]
-    public void ColorPaletteManager_HexToColor_SetsExpectedColor()
+    public void ColorPaletteManager_SetColorCoralPink_SetsExpectedColor()
     {
         var go = new GameObject("Palette");
         var palette = go.AddComponent<ColorPaletteManager>();
 
-        palette.SetColorKorallePink();
+        palette.SetColorCoralPink();
         ColorUtility.TryParseHtmlString("#FA6982", out Color expected);
 
         Assert.AreEqual(expected.r, ColorPaletteManager.SelectedColor.r, 0.001f);

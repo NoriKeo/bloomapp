@@ -5,19 +5,19 @@ using UnityEngine;
 
 public class JsonDataLoader : MonoBehaviour
 {
-    public static JsonDataLoader instance;
+    public static JsonDataLoader Instance;
 
     public AppData appData = new AppData();
-    private string filrPath;
+    private string filePath;
 
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            filrPath = Path.Combine(Application.persistentDataPath, "appData.json");
+            filePath = Path.Combine(Application.persistentDataPath, "appData.json");
             LoadData();
         }
         else
@@ -29,9 +29,9 @@ public class JsonDataLoader : MonoBehaviour
     // loads data from json file
     public void LoadData()
     {
-        if (File.Exists(filrPath))
+        if (File.Exists(filePath))
         {
-            string json = File.ReadAllText(filrPath);
+            string json = File.ReadAllText(filePath);
             appData = JsonUtility.FromJson<AppData>(json);
 
             if (appData.game == null)
@@ -74,7 +74,7 @@ public class JsonDataLoader : MonoBehaviour
     public void SaveData()
     {
         string json = JsonUtility.ToJson(appData, true);
-        File.WriteAllText(filrPath, json);
+        File.WriteAllText(filePath, json);
     }
    //checks the login data
     public bool ValidateLogin(string username, string password)

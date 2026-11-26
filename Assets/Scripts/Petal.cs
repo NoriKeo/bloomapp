@@ -3,13 +3,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 using ColorUtility = UnityEngine.ColorUtility;
 
-public class Peatal : MonoBehaviour
+public class Petal : MonoBehaviour
 {
     public string targetColorHex = "#FFFFFF";
 
-    private SpriteRenderer sr;
+    private SpriteRenderer spriteRenderer;
     private Color targetColor;
-    private Game gameManager;
+    private GameManager gameManager;
     private FlowerTarget parentFlower;
 
     public bool IsCorrectlyColored { get; private set; } = false;
@@ -17,8 +17,8 @@ public class Peatal : MonoBehaviour
 
     private void Awake()
     {
-        sr = GetComponent<SpriteRenderer>();
-        gameManager = FindObjectOfType<Game>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        gameManager = FindObjectOfType<GameManager>();
         parentFlower = GetComponentInParent<FlowerTarget>();
 
         if (!ColorUtility.TryParseHtmlString(targetColorHex, out targetColor))
@@ -35,15 +35,15 @@ public class Peatal : MonoBehaviour
         {
             if (!parentFlower.IsSelected)
             {
-                parentFlower.TriggerSelected();
+                parentFlower.Select();
             }
 
         }
         if (ColorPaletteManager.SelectedColor != Color.clear)
         {
-            sr.color = ColorPaletteManager.SelectedColor;
+            spriteRenderer.color = ColorPaletteManager.SelectedColor;
 
-            IsCorrectlyColored = ColorsMatch(sr.color, targetColor);
+            IsCorrectlyColored = ColorsMatch(spriteRenderer.color, targetColor);
             Debug.Log($"testi {targetColorHex} correctly colored");
 
 
