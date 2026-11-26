@@ -76,7 +76,7 @@ public class JsonDataLoader : MonoBehaviour
         string json = JsonUtility.ToJson(appData, true);
         File.WriteAllText(filePath, json);
     }
-   //checks the login data
+    // checks the login data
     public bool ValidateLogin(string username, string password)
     {
         foreach (var user in appData.users)

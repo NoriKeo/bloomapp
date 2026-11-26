@@ -34,21 +34,21 @@ public class LoginManager : MonoBehaviour
 
     public void OnLoginButtonClicked()
     {
-       if (isLocked) return;
+        if (isLocked) return;
 
-       string enteredUsername = usernameInput != null ? usernameInput.text.Trim() : "";
-       string enteredPassword = passwordInput != null ? passwordInput.text : "";
+        string enteredUsername = usernameInput != null ? usernameInput.text.Trim() : "";
+        string enteredPassword = passwordInput != null ? passwordInput.text : "";
 
-       if (JsonDataLoader.Instance != null && JsonDataLoader.Instance.ValidateLogin(enteredUsername, enteredPassword))
-       {
-           failedAttempts = 0;
-           if (feedbackText != null) feedbackText.text = "";
-           SceneManager.LoadScene(2);
-       }
-       else
-       {
-           HandleFailedAttempt("Login failed.");
-       }
+        if (JsonDataLoader.Instance != null && JsonDataLoader.Instance.ValidateLogin(enteredUsername, enteredPassword))
+        {
+            failedAttempts = 0;
+            if (feedbackText != null) feedbackText.text = "";
+            SceneManager.LoadScene(2);
+        }
+        else
+        {
+            HandleFailedAttempt("Login failed.");
+        }
 
     }
 

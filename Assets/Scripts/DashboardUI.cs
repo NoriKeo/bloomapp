@@ -30,7 +30,7 @@ public class DashboardUI : MonoBehaviour
     }
 
 
-//Update Mia’s details when new data has been recorded
+    // Update Mia’s details when new data has been recorded
     private void UpdateDashboard()
     {
         if (JsonDataLoader.Instance == null)

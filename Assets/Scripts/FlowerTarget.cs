@@ -5,7 +5,8 @@ using UnityEngine.EventSystems;
 
 public class FlowerTarget : MonoBehaviour
 {
-    [FormerlySerializedAs("zoomPos")] [SerializeField] private Transform zoomPosition;
+    [FormerlySerializedAs("zoomPos")]
+    [SerializeField] private Transform zoomPosition;
     public Sprite targetPreview;
     private GameManager gameManager;
     private float completionTimer;
